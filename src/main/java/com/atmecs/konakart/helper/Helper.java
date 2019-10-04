@@ -15,11 +15,12 @@ import com.atmecs.konakart.constant.Constants;
 
 public class Helper {
 	/**
-	 * Handling mouse event(Clicks at the current mouse location). Navigate to back
-	 * page. To move the window up and down.( Scroll by visible element) Wait for
-	 * some time to load the element and execute at different interval time.
-	 * Retrieving the specified elements Text(Get Text). Easy to choose or select an
-	 * option given under any drop downs.
+	 * Handling mouse event(Clicks at the current mouse location). 
+	 * Navigate to back  page.
+	 * To move the window up and down.( Scroll by visible element) 
+	 * Wait for some time to load the element and execute at different interval time.
+	 * Retrieving the specified elements Text(Get Text). 
+	 * Easy to choose or select an option given under any drop downs.
 	 * 
 	 * @author ranjitha.selvam
 	 *
@@ -34,15 +35,21 @@ public class Helper {
 	}
 	
 
-	public static void Click(WebDriver driver,String xpath) {
+	public static void click(WebDriver driver,String xpath) {
 		driver.findElement(By.xpath(xpath)).click();
 	}
 	
-
+/*
+ *  * Navigate to back  page.
+ */
 	public static void navigate(WebDriver driver) {
 		driver.navigate().back();
 	}
 	
+	
+	/*
+	 * To move the window up and down.( Scroll by visible element) 
+	 */
 
 	public static void scroll(WebDriver driver, String xpath) {
 
@@ -53,6 +60,9 @@ public class Helper {
 	}
 	
 
+	/*
+	 *  Wait for some time to load the element and execute at different interval time.
+	 */
 	public static void explicitWait(WebDriver driver, String xpath) {
 		WebDriverWait wait = new WebDriverWait(driver, Constants.page_load_timeout);
 		WebElement element;
@@ -65,6 +75,9 @@ public class Helper {
 		driver.manage().timeouts().implicitlyWait(Constants.page_load_timeout, TimeUnit.SECONDS);
 	}
 	
+	/*
+	 * Retrieving the specified elements Text(Get Text). 
+	 */
 
 	public static String getText(WebDriver driver, String properties) {
 		String data = driver.findElement(By.xpath(properties)).getText();
@@ -73,6 +86,9 @@ public class Helper {
 
 	}
 	
+	/*
+	 * Easy to choose or select an option given under any drop downs.
+	 */
 
 	public static void selectByValue(WebDriver driver,String xpath, String values) {
 		WebElement selectElement = driver.findElement(By.xpath(xpath));
@@ -93,6 +109,16 @@ public class Helper {
 		Select select = new Select(selectElement);
 		select.deselectByVisibleText(values);
 	}
+	
+	/*
+	 * pass the inputs.
+	
+     */
+	public static void sendValues(WebDriver driver,String xpath,String values)
+	
+	{
+      driver.findElement(By.xpath(xpath)).sendKeys(values);
+    }
 	
 
 }
